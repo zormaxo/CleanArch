@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- MediatR Packages -->
+    <PackageVersion Include="MediatR" Version="12.2.0" />
+    
+    <!-- You can add more central package versions here as needed -->
+  </ItemGroup>
+</Project>
