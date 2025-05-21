@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <RootNamespace>CleanArch.Domain</RootNamespace>
+    <AssemblyName>CleanArch.Domain</AssemblyName>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="MediatR" />
   </ItemGroup>
