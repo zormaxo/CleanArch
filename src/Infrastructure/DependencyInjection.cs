@@ -27,12 +27,9 @@ public static class DependencyInjection
                 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
             }
         );
-
         builder.Services.AddScoped<IApplicationDbContext>(provider =>
             provider.GetRequiredService<ApplicationDbContext>()
         );
-
-        builder.Services.AddScoped<ApplicationDbContextInitialiser>();
 
         builder.Services.AddSingleton(TimeProvider.System);
     }

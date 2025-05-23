@@ -12,21 +12,19 @@ public static class InitialiserExtensions
     {
         using var scope = app.ApplicationServices.CreateScope();
 
-        var initialiser =
-            scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+        var logger = scope
+            .ServiceProvider.GetRequiredService<ILoggerFactory>()
+            .CreateLogger(nameof(ApplicationDbContextInitialiser));
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        await initialiser.InitialiseAsync();
-
-        await initialiser.SeedAsync();
+        await ApplicationDbContextInitialiser.InitialiseAsync(context, logger);
+        await ApplicationDbContextInitialiser.SeedAsync(context, logger);
     }
 }
 
-public class ApplicationDbContextInitialiser(
-    ILogger<ApplicationDbContextInitialiser> logger,
-    ApplicationDbContext context
-)
+public static class ApplicationDbContextInitialiser
 {
-    public async Task InitialiseAsync()
+    public static async Task InitialiseAsync(ApplicationDbContext context, ILogger logger)
     {
         try
         {
@@ -39,11 +37,11 @@ public class ApplicationDbContextInitialiser(
         }
     }
 
-    public async Task SeedAsync()
+    public static async Task SeedAsync(ApplicationDbContext context, ILogger logger)
     {
         try
         {
-            await TrySeedAsync();
+            await TrySeedAsync(context);
         }
         catch (Exception ex)
         {
@@ -52,7 +50,7 @@ public class ApplicationDbContextInitialiser(
         }
     }
 
-    public async Task TrySeedAsync()
+    private static async Task TrySeedAsync(ApplicationDbContext context)
     {
         // Default data
         // Seed, if necessary
