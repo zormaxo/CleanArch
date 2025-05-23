@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using CleanArch.Application.Common.Interfaces;
+﻿using CleanArch.Application.Common.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace CleanArch.Application.Common.Behaviours;
@@ -7,7 +6,8 @@ namespace CleanArch.Application.Common.Behaviours;
 public class PerformanceBehaviour<TRequest, TResponse>(
     ILogger<TRequest> logger,
     IUser user,
-    IIdentityService identityService
+    IIdentityService identityService,
+    TimeProvider timeProvider
 ) : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
 {
@@ -19,13 +19,12 @@ public class PerformanceBehaviour<TRequest, TResponse>(
         CancellationToken cancellationToken
     )
     {
-        var timer = Stopwatch.StartNew();
+        var startTime = timeProvider.GetTimestamp();
 
         var response = await next();
 
-        timer.Stop();
-
-        var elapsedMilliseconds = timer.ElapsedMilliseconds;
+        var elapsed = timeProvider.GetElapsedTime(startTime);
+        var elapsedMilliseconds = elapsed.TotalMilliseconds;
 
         if (elapsedMilliseconds > LongRunningThresholdMs)
         {
