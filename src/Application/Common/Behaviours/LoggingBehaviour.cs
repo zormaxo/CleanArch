@@ -6,8 +6,7 @@ namespace CleanArch.Application.Common.Behaviours;
 
 public class LoggingBehaviour<TRequest>(
     ILogger<TRequest> logger,
-    IUser user,
-    IIdentityService identityService
+    IUser user
 ) : IRequestPreProcessor<TRequest>
     where TRequest : notnull
 {
@@ -17,10 +16,10 @@ public class LoggingBehaviour<TRequest>(
         var userId = user.Id ?? string.Empty;
         string? userName = string.Empty;
 
-        if (!string.IsNullOrEmpty(userId))
-        {
-            userName = await identityService.GetUserNameAsync(userId);
-        }
+        // if (!string.IsNullOrEmpty(userId))
+        // {
+        //     userName = await identityService.GetUserNameAsync(userId);
+        // }
 
         logger.LogInformation(
             "CleanArch Request: {Name} {@UserId} {@UserName} {@Request}",

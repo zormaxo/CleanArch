@@ -7,7 +7,7 @@ public class WeatherForecasts : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
-        app.MapGroup(this).RequireAuthorization().MapGet(GetWeatherForecasts);
+        app.MapGroup(this).MapGet(GetWeatherForecasts);
     }
 
     public async Task<Ok<IEnumerable<WeatherForecast>>> GetWeatherForecasts(ISender sender)

@@ -6,7 +6,6 @@ namespace CleanArch.Application.Common.Behaviours;
 public class PerformanceBehaviour<TRequest, TResponse>(
     ILogger<TRequest> logger,
     IUser user,
-    IIdentityService identityService,
     TimeProvider timeProvider
 ) : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
@@ -32,10 +31,10 @@ public class PerformanceBehaviour<TRequest, TResponse>(
             var userId = user.Id ?? string.Empty;
             var userName = string.Empty;
 
-            if (!string.IsNullOrEmpty(userId))
-            {
-                userName = await identityService.GetUserNameAsync(userId);
-            }
+            // if (!string.IsNullOrEmpty(userId))
+            // {
+            //     userName = await identityService.GetUserNameAsync(userId);
+            // }
 
             logger.LogWarning(
                 "CleanArch Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
