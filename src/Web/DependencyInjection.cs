@@ -1,5 +1,5 @@
-﻿using CleanArch.Infrastructure.Data;
-using CleanArch.Application.Common.Interfaces;
+﻿using CleanArch.Application.Common.Interfaces;
+using CleanArch.Infrastructure.Data;
 using CleanArch.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using NSwag;

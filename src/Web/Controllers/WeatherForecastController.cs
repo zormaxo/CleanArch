@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Web;
 
-namespace Web.Controllers;
+namespace CleanArch.Web.Controllers;
 
 [ApiController]
 [Route("[controller]")]
