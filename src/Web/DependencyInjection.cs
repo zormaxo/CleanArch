@@ -1,4 +1,6 @@
 ﻿using CleanArch.Infrastructure.Data;
+using CleanArch.Application.Common.Interfaces;
+using CleanArch.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using NSwag;
 using NSwag.Generation.Processors.Security;
@@ -9,6 +11,9 @@ public static class DependencyInjection
 {
     public static void AddWebServices(this IHostApplicationBuilder builder)
     {
+        builder.Services.AddScoped<IUser, CurrentUser>();
+        builder.Services.AddHttpContextAccessor();
+
         if (builder.Environment.IsDevelopment())
         {
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
