@@ -8,9 +8,9 @@ namespace CleanArch.Infrastructure.Data;
 
 public static class InitialiserExtensions
 {
-    public static async Task InitialiseDatabaseAsync(this IApplicationBuilder app)
+    public static async Task InitialiseDatabaseAsync(this WebApplication app)
     {
-        using var scope = app.ApplicationServices.CreateScope();
+        using var scope = app.Services.CreateScope();
 
         var logger = scope
             .ServiceProvider.GetRequiredService<ILoggerFactory>()

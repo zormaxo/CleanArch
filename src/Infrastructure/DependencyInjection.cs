@@ -1,5 +1,4 @@
 ﻿using CleanArch.Application.Common.Interfaces;
-using CleanArch.Domain.Constants;
 using CleanArch.Infrastructure.Data;
 using CleanArch.Infrastructure.Data.Interceptors;
 using Microsoft.EntityFrameworkCore;

@@ -2,6 +2,7 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <AspnetVersion>9.0.5</AspnetVersion>
     <EfcoreVersion>9.0.5</EfcoreVersion>
     <MicrosoftExtensionsVersion>9.0.5</MicrosoftExtensionsVersion>
   </PropertyGroup>
@@ -10,10 +11,12 @@
     <PackageVersion Include="AutoMapper" Version="14.0.0" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageVersion Include="MediatR" Version="12.5.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EfcoreVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="$(MicrosoftExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EfcoreVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
+    <PackageVersion Include="NSwag.AspNetCore" Version="14.2.0" />
   </ItemGroup>
 </Project>
