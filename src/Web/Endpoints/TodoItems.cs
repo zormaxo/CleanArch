@@ -21,7 +21,10 @@ public class TodoItems : EndpointGroupBase
             .MapDelete(DeleteTodoItem, "{id}");
     }
 
-    public async Task<Ok<PaginatedList<TodoItemBriefDto>>> GetTodoItemsWithPagination(ISender sender, [AsParameters] GetTodoItemsWithPaginationQuery query)
+    public async Task<Ok<PaginatedList<TodoItemBriefDto>>> GetTodoItemsWithPagination(
+        ISender sender,
+        [AsParameters] GetTodoItemsWithPaginationQuery query
+    )
     {
         var result = await sender.Send(query);
 
@@ -35,21 +38,31 @@ public class TodoItems : EndpointGroupBase
         return TypedResults.Created($"/{nameof(TodoItems)}/{id}", id);
     }
 
-    public async Task<Results<NoContent, BadRequest>> UpdateTodoItem(ISender sender, int id, UpdateTodoItemCommand command)
+    public async Task<Results<NoContent, BadRequest>> UpdateTodoItem(
+        ISender sender,
+        int id,
+        UpdateTodoItemCommand command
+    )
     {
-        if (id != command.Id) return TypedResults.BadRequest();
+        if (id != command.Id)
+            return TypedResults.BadRequest();
 
         await sender.Send(command);
 
         return TypedResults.NoContent();
     }
 
-    public async Task<Results<NoContent, BadRequest>> UpdateTodoItemDetail(ISender sender, int id, UpdateTodoItemDetailCommand command)
+    public async Task<Results<NoContent, BadRequest>> UpdateTodoItemDetail(
+        ISender sender,
+        int id,
+        UpdateTodoItemDetailCommand command
+    )
     {
-        if (id != command.Id) return TypedResults.BadRequest();
-        
+        if (id != command.Id)
+            return TypedResults.BadRequest();
+
         await sender.Send(command);
-        
+
         return TypedResults.NoContent();
     }
 

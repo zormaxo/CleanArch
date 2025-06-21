@@ -5,9 +5,8 @@ using CleanArch.Application.Common.Security;
 
 namespace CleanArch.Application.Common.Behaviours;
 
-public class AuthorizationBehaviour<TRequest, TResponse>(
-    IUser user
-) : IPipelineBehavior<TRequest, TResponse>
+public class AuthorizationBehaviour<TRequest, TResponse>(IUser user)
+    : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
 {
     public async Task<TResponse> Handle(
