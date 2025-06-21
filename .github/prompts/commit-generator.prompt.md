@@ -6,6 +6,7 @@ Please analyze the Git changes and generate a clear and detailed commit message 
 - Use present tense imperative mood (e.g. "add" not "added")
 - Include relevant ticket/issue numbers if applicable
 - Follow with an optional detailed description if needed, wrapped at 72 characters
+- Every commit message MUST include at least one emoji. This is mandatory."
 
 Examples:
 feat(auth): implement OAuth2 login flow
